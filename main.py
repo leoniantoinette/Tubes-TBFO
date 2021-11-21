@@ -5,7 +5,7 @@ import sys
 def compile(input_file):
   texts = lex.lexer(input_file)
   if (texts != -1):
-    print(texts)
+    # print(texts)  # testing
     parser = cyk.Parser("grammar.txt", texts)
     parser.__call__(texts, parse=True)
     parser.parse()
