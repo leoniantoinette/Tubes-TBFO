@@ -1,0 +1,104 @@
+di grammar, yg tanpa '' adalah variabel, yg dengan '' adalah terminal
+
+FORMAT
+yg dipake di CFG (variabel) : syntax di python
+
+FROM		    : from
+IMPORT		  : import
+AS		      : as
+CLASS	  	  : class
+DEF	    	  : def
+RETURN		  : return
+PASS	  	  : pass
+RAISE		    : raise
+CONTINUE	  : continue
+BREAK	  	  : break
+IF		      : if
+IF_LPAR		  : if( 		-> handle kasus kalau kurung bukanya nempel if
+ELIF	  	  : elif
+ELIF_LPAR	  : elif(		-> handle kasus kalau kurung bukanya nempel elif
+ELSE	  	  : else
+FOR		      : for
+IN		      : in
+RANGE		    : range
+RANGE_LPAR	: range(	-> handle kasus kalau kurung bukanya nempel range
+WHILE		    : while
+WHILE_LPAR	: while(	-> handle kasus kalau kurung bukanya nempel while
+NONE		    : None
+
+di grammar masuk dalam variabel BOOLEAN
+TRUE		    : True
+FALSE		    : False
+
+NOT		      : not
+IS		      : is
+WITH		    : with
+PRINT		    : print
+STRING		  : apapun yg diapit '' atau "" -> di grammar bisa pake variabel STRING
+WITH_METHOD	: .
+COLON		    : colon (:)
+SEMICOLON	  : semicolon (;)
+
+di grammar masuk dalam variabel NUMBER :
+INTEGER		  : integer
+DECIMAL		  : decimal
+
+VAR	 	      : yg dimulai dg huruf atau _, diakhiri dg huruf, _, atau angka
+
+di grammar masuk dalam variabel ARITH_OPS :
+PLUS		    : +
+MINUS		    : -
+POWER		    : **
+MULTIPLY	  : *
+SLASH	    	: /
+PERCENT		  : %
+DOUBLESLASH	: //
+
+EQUAL		    : =
+
+di grammar masuk dalam variabel ASSIGN_OPS :
+PLUSEQUAL	  : +=
+MINEQUAL	  : -=
+STAREQUAL	  : *=
+SLASHEQUAL	: /=
+PERCENTEQUAL: %=
+DSLASHEQUAL	: //=
+POWEREQUAL	: **=
+ANDEQUAL	  : &=
+OREQUAL		  : |=
+XOREQUAL	  : ^=
+RSHIFTEQUAL	: >>=
+LSHIFTEQUAL	: <<=
+
+di grammar masuk dalam variabel COMPARE_OPS :
+EQEQUAL		  : ==
+NOTEQUAL	  : !=
+GREATER		  : >
+LESS		    : <
+GREATEREQUAL: >=
+LESSEQUAL	  : <=
+
+di grammar masuk dalam variabel LOGICAL_OPS :
+AND		      : and
+OR		      : or
+
+di grammar masuk dalam variabel BITWISE_OPS :
+BITAND		  : &
+BITOR		    : |
+BITNOT		  : ~
+BITXOR		  : ^
+LEFTSHIFT	  : <<
+RIGHTSHIFT	: >>
+
+LSQB		  : [
+RSQB  		: ]
+LPAR	  	: (
+RPAR		  : )
+COMMA		  : ,
+
+penjelasan beberapa variabel dasar:
+OBJECT : termasuk string, number, variable, boolean, None
+EXPRESSION : contohnya a+b-5, x>5 -> tanpa () -> untuk antara aja
+EXPRESSION1 : pake kalo belum ada (
+EXPRESSION2 : utk handle kasus udah ada ( nya
+ASSIGNMENT : contohnya x=5, sum+=3, a=b-5

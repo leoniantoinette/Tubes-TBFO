@@ -1,0 +1,6 @@
+if (a==3):
+    a+=3
+if a:
+    var = 2
+elif(djfkd):
+    var = 3+2
