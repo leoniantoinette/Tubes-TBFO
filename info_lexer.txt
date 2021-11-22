@@ -102,3 +102,4 @@ EXPRESSION : contohnya a+b-5, x>5 -> tanpa () -> untuk antara aja
 EXPRESSION1 : pake kalo belum ada (
 EXPRESSION2 : utk handle kasus udah ada ( nya
 ASSIGNMENT : contohnya x=5, sum+=3, a=b-5
+EXCEPTION : isinya built-in exceptions yg ada di python
