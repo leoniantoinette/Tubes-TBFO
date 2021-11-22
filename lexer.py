@@ -28,14 +28,16 @@ class Lexer(object):
         if self.pos >= len(self.buf):
             return None
         else:
-            m = self.regex.match(self.buf, self.pos)
-            if m:
-                groupname = m.lastgroup
-                tok_type = self.group_type[groupname]
-                tok = Token(tok_type, m.group(groupname), self.pos)
-                self.pos = m.end()
-                return tok
-            raise
+            try:
+                m = self.regex.match(self.buf, self.pos)
+                if m:
+                    groupname = m.lastgroup
+                    tok_type = self.group_type[groupname]
+                    tok = Token(tok_type, m.group(groupname), self.pos)
+                    self.pos = m.end()
+                    return tok
+            except:
+                print("Syntax error!")
 
     def tokens(self):
         while 1:
@@ -216,7 +218,7 @@ def lexer(inputfile):
                 arr_var.append(tok.val)
 
     # testing
-    print(arr_res)
+    # print(arr_res)
     # print(arr_var)
 
     # delete comment
