@@ -97,6 +97,8 @@ RPAR		  : )
 COMMA		  : ,
 
 penjelasan beberapa variabel dasar:
+VAR_LIST : contohnya a[i], a[2]
+VARS : gabungan variabel dan var_list
 OBJECT : termasuk string, number, variable, boolean, None
 EXPRESSION : contohnya a+b-5, x>5 -> tanpa () -> untuk antara aja
 EXPRESSION1 : pake kalo belum ada (
