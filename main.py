@@ -16,7 +16,6 @@ def compile(input_file):
     # evaluate syntax using CFG
     if isValid:
       parser = cyk.Parser("grammar.txt", texts)
-      parser.__call__(texts)
       parser.print_tree()
     return
 

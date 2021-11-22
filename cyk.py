@@ -6,11 +6,15 @@ class Node:
         self.child1 = child1
         self.child2 = child2
 
+    def __repr__(self):
+        return self.symbol
+
 class Parser:
     def __init__(self, grammar, sentence):
         self.parse_table = None
         self.prods = {}
         self.grammar = grammar_converter.convert_grammar(grammar_converter.read_grammar(grammar))
+        self.__call__(sentence)
 
     def __call__(self, sentence):
         self.input = sentence.split()
@@ -51,7 +55,7 @@ class Parser:
         final_nodes = [n for n in self.parse_table[-1][0] if n.symbol == start_symbol]
         if final_nodes:
             print("Accepted!")
-            #     print("\nPossible parse(s):")
+            # print("\nPossible parse(s):")
             # trees = [generate_tree(node) for node in final_nodes]
             # if output:
             #     for tree in trees:
@@ -60,3 +64,8 @@ class Parser:
             #     return trees
         else:
             print("Syntax error!")
+
+# def generate_tree(node):
+#     if node.child2 is None:
+#         return f"[{node.symbol} '{node.child1}']"
+#     return f"[{node.symbol} {generate_tree(node.child1)} {generate_tree(node.child2)}]"
