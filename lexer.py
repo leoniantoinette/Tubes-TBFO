@@ -49,6 +49,8 @@ def lexer(inputfile):
         (r'\#.*', 'COMMENT'),
         (r'\"\"\"', 'COMMENT2'),
         (r'\'\'\'', 'COMMENT3'),
+        # (r'\n', 'NEWLINE'),
+        # (r'\s', 'WHITESPACE'),
         (r'from\s', 'FROM'),
         (r'import\s', 'IMPORT'),
         (r'as\s', 'AS'),
@@ -57,10 +59,10 @@ def lexer(inputfile):
         (r'return', 'RETURN'),
         (r'pass', 'PASS'),
         (r'raise\s', 'RAISE'),
-        (r'continue\s', 'CONTINUE'),
-        (r'break\s', 'BREAK'),
-        (r'if\s', ' IF'),
-        (r'if\(', ' IF_LPAR'),
+        (r'continue', 'CONTINUE'),
+        (r'break', 'BREAK'),
+        (r'if\s', 'IF'),
+        (r'if\(', 'IF_LPAR'),
         (r'elif\s', 'ELIF'),
         (r'elif\(', 'ELIF_LPAR'),
         (r'else', 'ELSE'),
@@ -214,7 +216,7 @@ def lexer(inputfile):
                 arr_var.append(tok.val)
 
     # testing
-    # print(arr_res)
+    print(arr_res)
     # print(arr_var)
 
     # delete comment
