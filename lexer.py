@@ -1,4 +1,5 @@
 import re
+import os.path
 
 class Token(object):
     def __init__(self, type, val, pos):
@@ -51,8 +52,6 @@ def lexer(inputfile):
         (r'\#.*', 'COMMENT'),
         (r'\"\"\"', 'COMMENT2'),
         (r'\'\'\'', 'COMMENT3'),
-        # (r'\n', 'NEWLINE'),
-        # (r'\s', 'WHITESPACE'),
         (r'from\s', 'FROM'),
         (r'import\s', 'IMPORT'),
         (r'as\s', 'AS'),
@@ -147,12 +146,6 @@ def lexer(inputfile):
         (r'BytesWarning', 'BYTESWARN'),
         (r'EncodingWarning', 'ENCODEWARN'),
         (r'ResourceWarning', 'RESOURCEWARN'),
-        # (r'str', 'STR'),
-        # (r'int', 'INT'),
-        # (r'float', 'FLOAT'),
-        # (r'double', 'DOUBLE'),
-        # (r'bool', 'BOOL'),
-        # (r'input', 'INPUT'),
         ('\".*\"', 'STRING'),
         ('\'.*\'', 'STRING'),
         (r'[\da-zA-Z_]*[a-zA-Z_]+[\da-zA-Z_]*','VAR'),
@@ -163,48 +156,52 @@ def lexer(inputfile):
         (r';', 'SEMICOLON'),
         (r'\d+','INTEGER'),
         (r'\d+.+\d','DECIMAL'),
-        (r'<<', 'LEFTSHIFT'),
-        (r'>>', 'RIGHTSHIFT'),
-        (r'//', 'DOUBLESLASH'),
         (r'\+=', 'PLUSEQUAL'),
         (r'-=', 'MINEQUAL'),
+        (r'\*\*=', 'POWEREQUAL'),
         (r'\*=', 'STAREQUAL'),
+        (r'//=', 'DSLASHEQUAL'),
         (r'/=', 'SLASHEQUAL'),
         (r'%=', 'PERCENTEQUAL'),
-        (r'//=', 'DSLASHEQUAL'),
-        (r'\*\*=', 'POWEREQUAL'),
         (r'&=', 'ANDEQUAL'),
         (r'\|=', 'OREQUAL'),
-        (r'^=', 'XOREQUAL'),
+        (r'\^=', 'XOREQUAL'),
         (r'>>=', 'RSHIFTEQUAL'),
         (r'<<=', 'LSHIFTEQUAL'),
         (r'==','EQEQUAL'),
         (r'!=', 'NOTEQUAL'),
-        (r'>', 'GREATER'),
-        (r'<', 'LESS'),
         (r'>=', 'GREATEREQUAL'),
         (r'<=', 'LESSEQUAL'),
+        (r'<<', 'LEFTSHIFT'),
+        (r'>>', 'RIGHTSHIFT'),
+        (r'>', 'GREATER'),
+        (r'<', 'LESS'),
         (r'=','EQUAL'),
         (r'\+','PLUS'),
         (r'\-','MINUS'),
         (r'\*\*','POWER'),
         (r'\*','MULTIPLY'),
+        (r'//', 'DOUBLESLASH'),
         (r'\/','SLASH'),
         (r'\%', 'PERCENT'),
         (r'&', 'BITAND'),
         (r'\|', 'BITOR'),
         (r'~', 'BITNOT'),
-        (r'^', 'BITXOR'),
+        (r'\^', 'BITXOR'),
         (r'\[', 'LSQB'),
         (r'\]', 'RSQB'),
         (r'\(','LPAR'),
         (r'\)','RPAR'),
         (r',', 'COMMA'),
+        (r'.','SYMBOL')
     ]
 
-    file = open(inputfile)
-    contents = file.read()
-    file.close()
+    if (os.path.isfile(inputfile)):
+        file = open(inputfile)
+        contents = file.read()
+        file.close()
+    else:
+        contents = inputfile
 
     lx = Lexer(rules)
     lx.input(contents)
