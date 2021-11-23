@@ -214,9 +214,7 @@ def lexer(inputfile):
             if (tok.type == 'VAR'):
                 arr_var.append(tok.val)
 
-    # testing
     # print(arr_res)
-    # print(arr_var)
 
     # delete comment
     i = 0

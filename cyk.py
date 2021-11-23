@@ -29,9 +29,6 @@ class Parser:
                 if f"'{word}'" == rule[1]:
                     self.parse_table[0][i].append(Node(rule[0], word))
 
-        # testing
-        # print(self.parse_table)
-
         for words_to_consider in range(2, length + 1):
             for starting_cell in range(0, length - words_to_consider + 1):
                 for left_size in range(1, words_to_consider):
@@ -47,25 +44,11 @@ class Parser:
                             self.parse_table[words_to_consider - 1][starting_cell].extend(
                                 [Node(rule[0], left, right) for left in left_nodes for right in right_nodes]
                             )
-        # testing
-        # print(self.parse_table)
 
-    def print_tree(self):
+    def cyk(self):
         start_symbol = self.grammar[0][0]
         final_nodes = [n for n in self.parse_table[-1][0] if n.symbol == start_symbol]
         if final_nodes:
             print("Accepted!")
-            # print("\nPossible parse(s):")
-            # trees = [generate_tree(node) for node in final_nodes]
-            # if output:
-            #     for tree in trees:
-            #         print(tree)
-            # else:
-            #     return trees
         else:
             print("Syntax error!")
-
-# def generate_tree(node):
-#     if node.child2 is None:
-#         return f"[{node.symbol} '{node.child1}']"
-#     return f"[{node.symbol} {generate_tree(node.child1)} {generate_tree(node.child2)}]"

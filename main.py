@@ -7,6 +7,7 @@ def compile(input_file):
   texts, variables = lex.lexer(input_file)
   if (texts != -1):
     # evaluate variables using DFA
+    isValid = True
     for var in variables:
       isValid = checkVar(var)
       if not(isValid):
@@ -16,7 +17,7 @@ def compile(input_file):
     # evaluate syntax using CFG
     if isValid:
       parser = cyk.Parser("grammar.txt", texts)
-      parser.print_tree()
+      parser.cyk()
     return
 
 if __name__ == '__main__':
