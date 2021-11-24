@@ -46,9 +46,12 @@ class Parser:
                             )
 
     def cyk(self):
-        start_symbol = self.grammar[0][0]
-        final_nodes = [n for n in self.parse_table[-1][0] if n.symbol == start_symbol]
-        if final_nodes:
+        try: 
+            start_symbol = self.grammar[0][0]
+            final_nodes = [n for n in self.parse_table[-1][0] if n.symbol == start_symbol]
+            if final_nodes:
+                print("Accepted!")
+            else:
+                print("Syntax error!")
+        except:
             print("Accepted!")
-        else:
-            print("Syntax error!")
